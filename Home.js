@@ -62,55 +62,11 @@ export default class HomeScreen extends Component {
                       Finally, banks are now digital and social 
                     </Text>
                     <Image
-                      source={require('./assets/compass.png')}
-                      style={{ 
-                        width: 100, 
-                        height: 100,
-                        }
-                       }
+                      source={require('./assets/AppLogoCircle.png')}
+                      style={styles.appLogo}
                     />
                   </View>
                   <View style={!this.state.isSignUp ? styles.loginBody : [styles.loginBody, {flex: 15}]} >
-                    <Input
-                      label="Email Address"
-                      placeholder='Email Address'
-                      leftIcon={{ 
-                        type: 'font-awesome', 
-                        name: 'envelope',
-                      }}
-                      autoFocus={false}
-                      keyboardType="email-address"
-                      ref={input => (this.emailInput = input)}
-                      onSubmitEditing={() => this.passwordInput.focus()}
-                      onChangeText={email => this.setState({ email })}
-                      errorMessage={
-                        isEmailValid ? null : 'Please enter a valid email address'
-                      }
-                      inputStyle={{ marginLeft: 10,}}
-                      containerStyle={{flex: 2, width: 300, justifyContent: 'center', }}
-                    /> 
-                    <Input
-                      label="Password"
-                      placeholder='Password'
-                      leftIcon={{ 
-                        type: 'font-awesome', 
-                        name: 'lock',
-                      }}
-                      blurOnSubmit={true}
-                      ref={input => (this.passwordInput = input)}
-                        onSubmitEditing={() =>
-                            this.login()
-                      }
-                      secureTextEntry={true}
-                      inputStyle={{ marginLeft: 10, }}
-                      onChangeText={password => this.setState({ password })}
-                      errorMessage={
-                        isPasswordValid
-                          ? null
-                          : 'Please enter at least 8 characters'
-                      }
-                      containerStyle={{flex: 2, width: 300, justifyContent: 'center', marginVertical: '5%'}}
-                    /> 
                     {this.state.isSignUp && (
                        <Input
                        placeholder='Confirm Password'
@@ -135,47 +91,54 @@ export default class HomeScreen extends Component {
                         /> 
                     )}
                     <Button
-                      title={this.state.isSignUp ? "Sign Up" : "Log in"}
+                      title={this.state.isSignUp ? "Sign Up" : "Create free account"}
+                      buttonStyle={{
+                        backgroundColor: '#2DC897',
+                        borderRadius: 30,
+                      }}
+                      titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+                      containerStyle={{ flex: 1 ,marginVertical: 100, height: 50, width: 350, marginBottom: '0%' }}
+                      underlayColor="transparent"
+                      onPress={() => this.props.navigation.navigate('Register')}
+                    />
+                    <Button
+                      title={"Connect with Facebook"}
                       loading={false}
                       loadingProps={{ size: 'small', color: 'white' }}
                       buttonStyle={{
-                        backgroundColor: '#0E69CC',
-                        borderRadius: 5,
+                        backgroundColor: '#4666D5',
+                        borderRadius: 30,
                       }}
                       titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
-                      containerStyle={{ flex: 1 ,marginVertical: 10, height: 50, width: 200, marginBottom: '10%' }}
+                      containerStyle={{ flex: 1 ,marginTop: 0, height: 50, width: 350, marginBottom: '10%' }}
                       underlayColor="transparent"
                       onPress={this.login}
                     />
-                     <Button
-                      title={!this.state.isSignUp ? "Create an account" : "Log In" }
+                     <Button 
+                      title={"Already have an account?" }
                       loading={false}
                       loadingProps={{ size: 'small', color: 'white' }}
-                      buttonStyle={{
+                      buttonStyle={{ 
                         backgroundColor: 'transparent',
                         borderRadius: 5,
                       }}
-                      titleStyle={{ fontSize: 14, fontWeight: '100' , color: '#3E3EC9'}}
+                      titleStyle={{ fontSize: 16, fontWeight: '100' , color: 'white'}}
                       underlayColor="transparent"
-                      onPress={!this.state.isSignUp ? this.signUp : password => this.setState({ isSignUp: false })}
+                      onPress={!this.state .isSignUp ? this.signUp : password => this.setState({ isSignUp: false })}
                     />
-                  </View>
+                  </View> 
                   <View style={styles.help} >
                       <Button
-                      title="Need help?"
+                      title="Login"
+                      containerStyle={{ flex: 1 ,marginTop: 1, height: 50, width: 350, marginBottom: '0%',}}
                       loading={false}
                       loadingProps={{ size: 'small', color: 'white' }}
                       buttonStyle={{
-                        backgroundColor: 'transparent',
-                        borderRadius: 5,
+                        borderRadius: 30,
+                        backgroundColor: "rgba(52, 52, 52, 0.8)"
                       }}
-                      titleStyle={{ fontSize: 22, fontWeight: '100' }}
-                      underlayColor="transparent"
-                      onPress={() => this.props.navigation.navigate('Login',{
-                        baseUrl: this.state.baseUrl,
-                        token: this.state.token
-                    })}
-                    />
+                      titleStyle={{ fontSize: 22, fontWeight: '100', }}
+                    /> 
                   </View>
                   <View style={{flex: 1}}></View>
               </View>
@@ -195,29 +158,30 @@ export default class HomeScreen extends Component {
     },
     title: {
       flex: 10,
-      justifyContent: 'center',
+      justifyContent: 'space-around',
       alignItems: 'center',
-      flexDirection: 'column',
-      marginBottom: '5%',
-      
+      marginTop: '10%' 
     },
     appTitle: {
       color: 'white',
       fontWeight: 'bold',
       textAlign: 'center',
-      paddingLeft: "5%",
+      paddingLeft: "4.5%",
+      bottom: 10
+    },
+    appLogo: {
+      width: 150,
+      height: 150,
     },
     loginBody: {
-      flex: 8,
+      flex: 10,
       flexDirection: 'column',
-      justifyContent: 'flex-start',
       alignItems: 'center',
-      backgroundColor: 'white',
       borderRadius: 10,
       paddingVertical: 15,
       paddingHorizontal: 15,
       elevation: 30,
-      opacity: 1
+      opacity: 1,
     },
     
     help: {

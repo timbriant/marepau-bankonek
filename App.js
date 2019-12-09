@@ -2,13 +2,18 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './Home.js';
-import LoginScreen from './Login.js';
+import RegisterScreen from './Register.js';
+import ExistingCustomerScreen from './ExistingOB.js';
+import ExistingCustomerOTPScreen from './OTPOB.js';
+
 
 
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Login: LoginScreen
+    Register: RegisterScreen,
+    ExistingCustomer: ExistingCustomerScreen,
+    ExistingCustomerOTP: ExistingCustomerOTPScreen
   },
   {    
     headerMode: 'none',
