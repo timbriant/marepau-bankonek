@@ -3,8 +3,12 @@ import Header from './Header.js';
 import {StyleSheet, View, ImageBackground, TextInpu, SafeAreaView, ScrollView} from 'react-native';
 import { ThemeProvider, Text, Image, Input, Button, Icon} from 'react-native-elements';
 import SuccessAnimation from './SuccessAnimation.js';
+import LottieView from 'lottie-react-native';
 
-export default class SuccessScreen extends Component {
+
+export default class EligibleScreen extends Component {
+
+
 
     constructor(props) {
         super(props);
@@ -46,14 +50,20 @@ export default class SuccessScreen extends Component {
                
                 <View style={{flex: 1, height: 150, width: 150}} >
                       <SuccessAnimation
-                        link="success"
+                        link="eligible"
                       />
                 </View>
-                <Text h4 style={{...styles.elementMargin,flex: 0, marginLeft: 20}}>
-                  Your wallet has been successfully added!
+                <Text h4 style={{...styles.elementMargin,flex: 0, textAlign: 'center'}}>
+                  Juan Dela Cruz is now eligible for a bank referral!
                 </Text>
                 <Text h5 style={{...styles.subheading, flex: 1}}>
-                 Congratulations on your newly created account and welcome aboard! Jump right in to experience Fusion Bankeros 
+                 As a loyal user, our bank has decided that Juan Dela Cruz can now avail our simplified
+                 onboarding program where he can enjoy the benefits of being banked and verified in our app. 
+                </Text>
+            
+                <Text h5 style={{...styles.subheading, flex: 1}}>
+                It's all thanks to you! Don't worry, we're also including you in the fun, you can now onboard him on behalf 
+                of our bank and after his application gets processed, you are rewarded with rebates! 
                 </Text>
                 <Button
                     title={"Done"}
@@ -72,7 +82,6 @@ export default class SuccessScreen extends Component {
         );
       }
   }
-  
 
   const styles = StyleSheet.create({
     container: {

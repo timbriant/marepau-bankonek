@@ -5,7 +5,9 @@ import { ThemeProvider, Text, Image, Input, Button} from 'react-native-elements'
 import CreditCard from 'react-native-credit-card';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-
+function Separator() {
+    return <View style={styles.separator} />;
+}
 export default class TermsAndCondtionsScreen extends Component {
 
     constructor(props) {
@@ -43,12 +45,12 @@ export default class TermsAndCondtionsScreen extends Component {
                     <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
                             <Text>
-                                Spending Wallet
+                                FB Cash
                             </Text>
                         </View>
                         <View>
                             <Text>
-                                Wallet
+                                FB Credit
                             </Text>
                         </View>
                     </View>
@@ -66,7 +68,7 @@ export default class TermsAndCondtionsScreen extends Component {
                     </View>
                 </View>
            
-                <View style={{flex: 0.5, marginLeft: 15, marginBottom: 50}}>
+                <View style={{flex: 0.5, marginLeft: 15, marginBottom: 25}}>
                     <CreditCard
                         type={'visa'}
                         imageFront={require('./assets/card-front.png')}
@@ -79,6 +81,7 @@ export default class TermsAndCondtionsScreen extends Component {
                         expiry={'0512'}
                     />
                 </View>
+                <Separator />
                 <View style={{ flex: 0,  }}>
                     <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center', alignContent: 'center'}}>
                         <View style={{...styles.homeIcons, flex: 0, width: 100 , height: 100, backgroundColor: 'lightgray', paddingTop: 15,  
@@ -117,8 +120,7 @@ export default class TermsAndCondtionsScreen extends Component {
                                         name="handshake-o"
                                         size={50}
                                         color={ this.props.color ? this.props.color : "black" }
-                                        onPress={() => this.props.navigation.navigate(this.props.previousPage)}
-
+                                        onPress={() => this.props.navigation.navigate('InitialLending')}
                                     />
                                 }
                                 type="clear"
@@ -259,7 +261,14 @@ export default class TermsAndCondtionsScreen extends Component {
       homeLabels: {
           textAlign: 'center',
           fontWeight: 'bold'
-      }
+      },
+
+      separator: {
+        marginVertical: 8,
+        borderBottomColor: '#737373',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        marginBottom: 25
+      },
 
 
   });

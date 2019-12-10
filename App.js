@@ -9,9 +9,11 @@ import ExistingCustomerDetailScreen from './DetailsOB.js';
 import TermsAndCondtionsScreen from './TermsAndCondition.js';
 import SuccessScreen from './Success.js';
 import DashboardScreen from './Dashboard.js';
-
-
-
+import InitialLendingScreen from './InitialLending.js';
+import LendScanQRScreen from './LendScanQR.js';
+import RequestScreen from './Request.js';
+import LendSuccessScreen from './LendSuccess.js';
+import EligibleScreen from './Eligible.js';
 
 const AppNavigator = createStackNavigator(
   {
@@ -22,11 +24,16 @@ const AppNavigator = createStackNavigator(
     ExistingCustomerDetails: ExistingCustomerDetailScreen,
     TermsAndCondition: TermsAndCondtionsScreen,
     Success: SuccessScreen,
-    Dashboard: DashboardScreen
+    Dashboard: DashboardScreen,
+    InitialLending: InitialLendingScreen,
+    LendScanQR: LendScanQRScreen,
+    Request: RequestScreen,
+    LendSuccess: LendSuccessScreen,
+    Eligible:EligibleScreen
   },
   {    
     headerMode: 'none',
-    initialRouteName: "Home"
+    initialRouteName: "Request"
   }
 );
 

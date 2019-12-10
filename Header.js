@@ -17,7 +17,7 @@ export default class HomeScreen extends Component {
                         icon={
                             <Icon
                                 name="long-arrow-left"
-                                size={50}
+                                size={45}
                                 color={ this.props.color ? this.props.color : "white" }
                             />
                         }
@@ -29,12 +29,13 @@ export default class HomeScreen extends Component {
                 </View>
                 <View style={{flexDirection: "row", }}>
                     <View style={{width: 25, height: 50,}} />
-                    <Text h4 style={{
+                    <Text style={{
                             color:  this.props.color ? this.props.color : "white" ,
                             fontWeight: 'bold',
                             textAlign: 'center',
                             paddingLeft: "4.5%",
                             bottom: 10,
+                            fontSize: 21
                     }}>
                         {this.props.title}
                     </Text>
@@ -46,7 +47,7 @@ export default class HomeScreen extends Component {
 
   const styles = StyleSheet.create({
     container: {
-      marginBottom: 30,
+      marginBottom: 3,
       flex: 0,
       flexDirection: 'column',
     },

@@ -4,7 +4,7 @@ import {StyleSheet, View, ImageBackground, TextInpu, SafeAreaView, ScrollView} f
 import { ThemeProvider, Text, Image, Input, Button, Icon} from 'react-native-elements';
 import SuccessAnimation from './SuccessAnimation.js';
 
-export default class SuccessScreen extends Component {
+export default class LendSuccessScreen extends Component {
 
     constructor(props) {
         super(props);
@@ -44,16 +44,16 @@ export default class SuccessScreen extends Component {
               </View>
               <View style={styles.loginBody}>
                
-                <View style={{flex: 1, height: 150, width: 150}} >
+                <View style={{flex: 1, height: 350, width: 350}} >
                       <SuccessAnimation
-                        link="success"
+                        link="lend"
                       />
                 </View>
-                <Text h4 style={{...styles.elementMargin,flex: 0, marginLeft: 20}}>
-                  Your wallet has been successfully added!
+                <Text h4 style={{...styles.elementMargin,flex: 0,textAlign: 'center'}}>
+                  Your have {'\n'} successfully lended Juan Dela Cruz!
                 </Text>
                 <Text h5 style={{...styles.subheading, flex: 1}}>
-                 Congratulations on your newly created account and welcome aboard! Jump right in to experience Fusion Bankeros 
+                    The transaction is processed, you can monitor the status of your loan in the meantime!  
                 </Text>
                 <Button
                     title={"Done"}
