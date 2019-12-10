@@ -63,7 +63,7 @@ export default class SuccessScreen extends Component {
                     titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
                     containerStyle={{ flex: 1 ,marginVertical: 0, height: 50, width: 350, marginBottom: '0%' }}
                     underlayColor="transparent"
-                    onPress={() => this.props.navigation.navigate('Success')}  
+                    onPress={() => this.props.navigation.navigate('Dashboard')}  
                 />  
               </View>
             </ThemeProvider>

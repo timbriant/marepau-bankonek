@@ -8,8 +8,7 @@ import ExistingCustomerOTPScreen from './OTPOB.js';
 import ExistingCustomerDetailScreen from './DetailsOB.js';
 import TermsAndCondtionsScreen from './TermsAndCondition.js';
 import SuccessScreen from './Success.js';
-
-
+import DashboardScreen from './Dashboard.js';
 
 
 
@@ -22,7 +21,8 @@ const AppNavigator = createStackNavigator(
     ExistingCustomerOTP: ExistingCustomerOTPScreen,
     ExistingCustomerDetails: ExistingCustomerDetailScreen,
     TermsAndCondition: TermsAndCondtionsScreen,
-    Success: SuccessScreen
+    Success: SuccessScreen,
+    Dashboard: DashboardScreen
   },
   {    
     headerMode: 'none',

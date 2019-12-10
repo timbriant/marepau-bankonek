@@ -112,7 +112,7 @@ export default class HomeScreen extends Component {
                       titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
                       containerStyle={{ flex: 1 ,marginTop: 0, height: 50, width: 350, marginBottom: '10%' }}
                       underlayColor="transparent"
-                      onPress={this.login}
+                      onPress={() => this.props.navigation.navigate('Dashboard')}
                     />
                      <Button 
                       title={"Already have an account?" }
