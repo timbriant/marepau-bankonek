@@ -124,7 +124,7 @@ export default class HomeScreen extends Component {
                       }}
                       titleStyle={{ fontSize: 16, fontWeight: '100' , color: 'white'}}
                       underlayColor="transparent"
-                      onPress={!this.state .isSignUp ? this.signUp : password => this.setState({ isSignUp: false })}
+                     
                     />
                   </View> 
                   <View style={styles.help} >
@@ -138,6 +138,7 @@ export default class HomeScreen extends Component {
                         backgroundColor: "rgba(52, 52, 52, 0.8)"
                       }}
                       titleStyle={{ fontSize: 22, fontWeight: '100', }}
+                      onPress={() => this.props.navigation.navigate('Login')}
                     /> 
                   </View>
                   <View style={{flex: 1}}></View>

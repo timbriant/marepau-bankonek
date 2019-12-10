@@ -6,8 +6,16 @@ import { ThemeProvider, Text, Image, Input, Button, Icon} from 'react-native-ele
 
 export default class InitialLending extends Component {
   constructor(props) {
-    super(props)
-    this.state = { count: 0 }
+    super(props);
+
+    this.state = {
+        user: this.props.navigation.getParam('user', 'NO-ID'),
+    };
+    console.log(this.state.user)
+  }
+
+  componentDidMount() {
+    console.log("state" + this.state.user)
   }
 
   onPress = () => {
@@ -17,7 +25,8 @@ export default class InitialLending extends Component {
   }
 
  render() {
-   return (
+   if (this.state.user === 'EU'){
+      return (
      
      <ThemeProvider style={styles.container}>
         <View style={{flex: 0, flexDirection: 'column'}}>
@@ -52,7 +61,7 @@ export default class InitialLending extends Component {
 
             <TouchableOpacity
                 style={{...styles.button,  backgroundColor: '#EB6A9F',}}
-                onPress={this.onPress}
+                onPress={() => this.props.navigation.navigate('LendRequest')}
             >   
                    
                     <View style={{flex: 1, width: 50, height: 125, paddingTop: 25, paddingLeft: 10, backgroundColor: '',}} >
@@ -97,6 +106,69 @@ export default class InitialLending extends Component {
       
       </ThemeProvider>
     )
+   }
+   else{
+    return (
+      <ThemeProvider style={styles.container}>
+         <View style={{flex: 0, flexDirection: 'column'}}>
+             <Header  
+                 navigation={this.props.navigation} 
+                 previousPage="Dashboard"
+                 title={"Lending Transaction"} 
+                 color="black"
+             />
+         </View>
+         <View style={styles.loginBody}>
+          
+          
+             <TouchableOpacity
+                 style={{...styles.button,  backgroundColor: '#EB6A9F',}}
+                 onPress={() => this.props.navigation.navigate('LendRequest')}
+             >   
+                    
+                     <View style={{flex: 1, width: 50, height: 125, paddingTop: 25, paddingLeft: 10, backgroundColor: '',}} >
+                         <Image
+                             source={require('./assets/Bank.png')}
+                             style={styles.appLogo}
+                         />
+                     </View>
+                     <View style={{flex: 2.5, width: 50, height: 130, backgroundColor: '',paddingVertical: 15, paddingHorizontal: 15}} >
+                         <Text style={{fontWeight: 'bold', color: 'white', fontSize: 18}}>
+                            Request for Loan
+                         </Text>
+                         <Text style={{color: 'white', fontSize: 15}}>
+                         Generate a QR code of your loan request that 
+                         will be scanned by the lender
+                         </Text>
+                     </View>
+             </TouchableOpacity>
+ 
+             <TouchableOpacity
+                 style={{...styles.button,  backgroundColor: '#8676FB',}}
+                 onPress={this.onPress}
+             >   
+                     <View style={{flex: 2.5, width: 50, height: 130, backgroundColor: '',paddingVertical: 15, paddingHorizontal: 15}} >
+                         <Text style={{fontWeight: 'bold', color: 'white', fontSize: 18}}>
+                             Loan Status
+                         </Text>
+                         <Text style={{color: 'white', fontSize: 15}}>
+                             View the status of your loans
+                         </Text>
+                     </View>
+                     <View style={{flex: 1, width: 50, height: 125, paddingTop: 25, paddingLeft: 10, backgroundColor: '',}} >
+                         <Image
+                             source={require('./assets/Bank.png')}
+                             style={styles.appLogo}
+                         />
+                     </View>
+             </TouchableOpacity>
+ 
+             
+         </View>
+       
+       </ThemeProvider>
+     )
+   }
   }
 }
 

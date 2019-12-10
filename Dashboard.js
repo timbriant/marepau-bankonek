@@ -12,18 +12,89 @@ export default class TermsAndCondtionsScreen extends Component {
 
     constructor(props) {
         super(props);
-    
+       
         this.state = {
-          email: '',
-          password: '',
-          isEmailValid: true,
-          isPasswordValid: true,
-          isConfirmationValid: true,
-          isSignUp: false,
-          baseUrl: 'https://api.lobdev.fusionfabric.cloud/retail-banking/accounts/v1/',
-          token: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJYTEJpUk5ZMkRvWS0wREVkQVBsMmJxUGpJWXZRUjVqalhBMmczZzczQzYwIn0.eyJqdGkiOiI2MjRmZTZkMy1jY2NkLTQyYTctOTMzZC1jYzdhZDcxYzc1YjUiLCJleHAiOjE1NTc5MTQ0MzcsIm5iZiI6MCwiaWF0IjoxNTU3OTEwODM3LCJpc3MiOiJodHRwczovL2FwaS5sb2JkZXYuZnVzaW9uZmFicmljLmNsb3VkL2xvZ2luL3YxIiwic3ViIjoiY2FmYzIzMDItYjM2My00ZmY2LTk0NGEtMjRmYTVkYjZlYzg2IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiNTlmYjcxOWYtMThhNy00MDJhLWFlMGYtYWZhZjJjYjdkZTMxIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiOWZhYTNiNzctNWY5My00OWZjLWE0ZjgtMDA3YWRlOGZmNzgxIiwiYWNyIjoiMSIsInNjb3BlIjoicmV0YWlsLWJhbmtpbmctYWNjb3VudHMtdjEtNzQ4MGU4MjYtM2UzYy00MzIxLWE4MjAtNDY3YmU5YzUzMzEwIHJldGFpbC1iYW5raW5nLXBheW1lbnRzLXYxLWNhNjg1NDgzLThjMTEtNDc5OS1iZTM5LTY3NGQ0YzFhMTUyMyIsImFwcCI6IjU5ZmI3MTlmLTE4YTctNDAyYS1hZTBmLWFmYWYyY2I3ZGUzMSIsInRlbmFudCI6InNhbmRib3giLCJ1c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC01OWZiNzE5Zi0xOGE3LTQwMmEtYWUwZi1hZmFmMmNiN2RlMzEifQ.Z3m6m4ZHTyq0blMXqsAahQn4DqJ9zlJRd-ApKJnnyl1FwbncKT0Tyw2rcoXtJ5sY6ebqiVatstR1a_bH9O2SkpKN8BJLNvAr4O4oJgpT2qYNn_6JQ8gplssUTF0fwq92FdhKCmgGkxF6Aran63DedSUCgRKkJY1dsvuhBm8fBce7Mz8XWcnIA7-6QBtcOoJqjmiWCSD50sfPiPP8_hTKzzXSEBoAW2lm__8_AG67DSS6r0PzAhQRdTi3Lx73wk6RJOEGtvqveCEr_wZOwQlSN8TEhYz6sNEZdL9ZVuw_YWzjZQrolPgRJSiqo_Gydale3c94jbv-e8qKtjkdOUuiOQ'
+          user: this.props.navigation.getParam('user', 'NO-ID'),
+          fbCredit: 0,
+          baseUrl: 'https://api.preprod.fusionfabric.cloud/retail-banking/accounts/v1/accounts/0001000003001/balances',
+          token: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhOFBpUkNad2tRREFhMkluT044aWxRaFh1bl9rbEFTb19ZUHhxdEVUY3FJIn0.eyJqdGkiOiIyYzg2NzgxNi1kYTYwLTQzZGUtODBmYy03ZTZhOWE3ZWJkOWEiLCJleHAiOjE1NzYwMTIwNTksIm5iZiI6MCwiaWF0IjoxNTc2MDExNzU5LCJpc3MiOiJodHRwczovL2FwaS5wcmVwcm9kLmZ1c2lvbmZhYnJpYy5jbG91ZC9sb2dpbi92MSIsImF1ZCI6WyJiMmItYWNjb3VudC12MS1hYzM2ZWUwYS1iNjAyLTQyN2MtYjIzNS1lNDE4OWNlNTY1YmYiLCJyZXRhaWwtYmFua2luZy1hY2NvdW50cy1vcGVyYXRpb24tdjEtZjU0MTY2MmMtOWVjNy00NzEwLWFiMGYtZTRhMWQ0MzM2OTJjIiwicmV0YWlsLWJhbmtpbmctYWNjb3VudHMtdjEtNzQ4MGU4MjYtM2UzYy00MzIxLWE4MjAtNDY3YmU5YzUzMzEwIiwicmV0YWlsLWJhbmtpbmctcGF5bWVudHMtdjEtY2E2ODU0ODMtOGMxMS00Nzk5LWJlMzktNjc0ZDRjMWExNTIzIiwiYjJiLWdvb2QtZnVuZC12MS01MzA5ZGZhMi02MDg3LTQxOTMtOGI5ZC03MzcxNGY2Mjg0Y2YiLCJiMmItaW50ZXJuYWwtdHJhbnNmZXJzLXYxLTM0Mzg0NDIwLTE0ZGItNDZjOS1hMmYzLWExYTc1MzU2MGRkZiIsImIyYi1jdXN0b21lci1yZWFkLXYxLTg3MDM2NGJlLTFkYmUtNGZlNi1hMjAyLWZiYmM0OThlMGU3NCJdLCJzdWIiOiIwM2U0NzJhMS0wYjE5LTRhNDEtOWZiMy0xYTNiZWYwNTk2ODkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJiMWVmMWQ1Mi01YzIyLTRiYzAtOTY2OC1hODA2MDU1NjMxNzYiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJkM2Q1ZGQxMS1hNzkyLTQwYTUtOTU4MS1iNTUxNTcyNDA4NmMiLCJhY3IiOiIxIiwic2NvcGUiOiJvcGVuaWQgYjJiLWdvb2QtZnVuZC12MS01MzA5ZGZhMi02MDg3LTQxOTMtOGI5ZC03MzcxNGY2Mjg0Y2YgYjJiLWludGVybmFsLXRyYW5zZmVycy12MS0zNDM4NDQyMC0xNGRiLTQ2YzktYTJmMy1hMWE3NTM1NjBkZGYgcmV0YWlsLWJhbmtpbmctcGF5bWVudHMtdjEtY2E2ODU0ODMtOGMxMS00Nzk5LWJlMzktNjc0ZDRjMWExNTIzIHJldGFpbC1iYW5raW5nLWFjY291bnRzLW9wZXJhdGlvbi12MS1mNTQxNjYyYy05ZWM3LTQ3MTAtYWIwZi1lNGExZDQzMzY5MmMgYjJiLWFjY291bnQtdjEtYWMzNmVlMGEtYjYwMi00MjdjLWIyMzUtZTQxODljZTU2NWJmIGIyYi1jdXN0b21lci1yZWFkLXYxLTg3MDM2NGJlLTFkYmUtNGZlNi1hMjAyLWZiYmM0OThlMGU3NCByZXRhaWwtYmFua2luZy1hY2NvdW50cy12MS03NDgwZTgyNi0zZTNjLTQzMjEtYTgyMC00NjdiZTljNTMzMTAiLCJhcHAiOiJiMWVmMWQ1Mi01YzIyLTRiYzAtOTY2OC1hODA2MDU1NjMxNzYiLCJpcHdoaXRlbGlzdCI6IiIsInRlbmFudCI6ImVxdWF0aW9uLWRldiIsInVzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWIxZWYxZDUyLTVjMjItNGJjMC05NjY4LWE4MDYwNTU2MzE3NiJ9.duD48jDofbQKyPaCDPuJC-Z_kAXOR8RfNBhy7QKkb7beHZXtL4TH0rQVsBycH1GxbHwOBkVrZbXSErkKSXWV7mqhf6xY9zrFxf6Vv2mX06VBinm8t8uQw5ypwUlTsbvtvWYtGAoyqbLrxUlGI9d4dGj_UIcZ4Pz1WgKI54hDXXXCPD4xIYUCwcI6X_gAU064-QuqHiT2mKEM-dahzslEkyajb4g15vporHx_43MOG6VF-ah6sgcMsKidynEZCSQvcRS9wiG0rqM7mgRIvpOpRKKcQSDQSdemVjYqKu9Tf5ss2CQZAR-Y8gz4Iasq42Bdolcp3aLPQ3-cwIr4DrVanQ'
+          ,dataSource: []
+          ,accountID: ''
         };
-      }
+    }
+
+    componentDidMount(){
+        if (this.state.user === "EU"){
+            this.GetCurrentWalletEU('5def81aefd00a755000130be');
+            this.GetFBCash();
+        }
+        else if (this.state.user === "UU"){
+            this.GetCurrentWalletEU('5def81aefd00a755000130bf');
+        }
+        else if (this.state.user === "RU"){
+            this.GetCurrentWalletEU('5def81aefd00a755000130c0');
+        }
+    }
+
+    GetCurrentWalletEU = (link) => {
+        var curBalance = null;
+        var getRequest = new XMLHttpRequest();
+        getRequest.withCredentials = true;
+        getRequest.open("GET", "https://marepau-6431.restdb.io/rest/data");
+        getRequest.setRequestHeader("content-type", "application/json");
+        getRequest.setRequestHeader("x-apikey", "	3fd85f237efc9095e9f85488a6d2fed597ed8");
+        getRequest.setRequestHeader("cache-control", "no-cache");
+        getRequest.send(curBalance);
+
+        getRequest.onreadystatechange = (e) => {
+          if (getRequest.readyState !== 4) {
+            return;
+          }
+
+          if (getRequest.status === 200) {``
+            var myObj = JSON.parse(getRequest.responseText);
+            let i = 0;
+            while (i < myObj.length) {
+              if (myObj[i]._id === link){
+                curBalance = parseInt(myObj[i].amount, 10);
+              }
+              i++;
+            }
+            this.setState(() => (
+                { 
+                  fbCredit: curBalance,
+            }))
+          } else {
+            console.warn('error');
+          }
+        };
+
+
+    }
+
+    GetFBCash(){
+        let h = new Headers();
+        h.append('Authorization', this.state.token); 
+        h.append('Content-Type', 'application/json')
+        
+        let req = new Request(this.state.baseUrl, {
+            headers: h,
+            method: 'GET'
+        });
+
+        fetch(req)
+        .then(response => response.json())
+        .then((responseJson)=> {
+            this.setState({
+            dataSource: responseJson.balances[3].amount.amount != null ? responseJson.balances[3].amount.amount : 300 ,
+            accountID: responseJson.accountID != undefined ? responseJson.accountID : '322 2382 823 801'
+            })
+        })
+        .catch(error=>console.log(error)) //to catch the errors if any
+    }
+
+
+ 
 
 
     render() {
@@ -56,13 +127,13 @@ export default class TermsAndCondtionsScreen extends Component {
                     </View>
                     <View style={{flex: 0, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
-                            <Text h3>
-                                $ 926.21
+                            <Text style={{fontSize: 32, fontWeight: 'bold'}}>
+                                $ {this.state.dataSource}
                             </Text>
                         </View>
                         <View>
-                            <Text h3>
-                                $ 40
+                        <Text style={{fontSize: 32, fontWeight: 'bold'}}>
+                                $ {this.state.fbCredit}
                             </Text>
                         </View>
                     </View>
@@ -120,7 +191,9 @@ export default class TermsAndCondtionsScreen extends Component {
                                         name="handshake-o"
                                         size={50}
                                         color={ this.props.color ? this.props.color : "black" }
-                                        onPress={() => this.props.navigation.navigate('InitialLending')}
+                                        onPress={() => this.props.navigation.navigate('InitialLending',{
+                                            user: this.state.user
+                                        })}
                                     />
                                 }
                                 type="clear"

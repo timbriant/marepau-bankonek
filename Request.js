@@ -10,178 +10,177 @@ export default class SuccessScreen extends Component {
 
     constructor(props) {
         super(props);
-    
         this.state = {
-          email: '',
-          password: '',
-          isEmailValid: true,
-          isPasswordValid: true,
-          isConfirmationValid: true,
-          isSignUp: false,
+            data: [],
+            test: "test",
+            loading: true
         };
       }
+      
 
       componentDidMount() {
-        this.animation.play();
-        // Or set a specific startFrame and endFrame with:
-        this.animation.play(100, 500);
+        if (this.state.loading != true){
+          this.animation.play(100, 500);
+        }
       }
+
+   
 
 
     render() {
-        const {
-          isEmailValid,
-          isPasswordValid,
-          email,
-          password,
-        } = this.state;
-        return (
-          <ImageBackground 
-              style={styles.container}
-              source={require('./assets/Rectangle.png')} 
-          >
-            <ThemeProvider>
-              <View style={{flex: 0, flexDirection: 'column'}}>
-                <Header  
-                  navigation={this.props.navigation} 
-                  previousPage="InitialLending"
-                  title={"Loan Request"} 
-                />
+      const {
+        isEmailValid,
+        isPasswordValid,
+        email,
+        password,
+      } = this.state;
+    
+      return (
+        <ImageBackground 
+            style={styles.container}
+            source={require('./assets/Rectangle.png')} 
+        >
+          <ThemeProvider>
+            <View style={{flex: 0, flexDirection: 'column'}}>
+              <Header  
+                navigation={this.props.navigation} 
+                previousPage="InitialLending"
+                title={"Loan Request"} 
+              />
+            </View>
+            <View style={styles.loginBody}>
+             
+              <View style={{position: 'relative',flex: 0, height: 150, width: 150, }}
+                    onPress={() => this.props.navigation.navigate('Dashboard')}  
+                  >
+                  <Image
+                    source={require('./assets/juan.jpg')}
+                    style={styles.appLogo}
+                  />
+                  <TouchableOpacity>
+                    
+                  </TouchableOpacity>
+                  <LottieView
+                      ref={animation => {
+                      this.animation = animation;
+                      }}
+                      source={require('./assets/10236-reward-badge.json')}
+                      style={{bottom: 30, left: 60, width: 75, height: 75,   }}
+                  />
+                 
               </View>
-              <View style={styles.loginBody}>
-               
-                <View style={{position: 'relative',flex: 0, height: 150, width: 150, }}
-                      onPress={() => this.props.navigation.navigate('Dashboard')}  
-
-                    >
-                    <Image
-                      source={require('./assets/juan.jpg')}
-                      style={styles.appLogo}
+              <Text h4 style={{...styles.elementMargin,flex: 0, marginBottom: 10}}>
+                     {/* {this.state.data[0].amount} */}
+                     {'Juan Dela Cruz'}
+              </Text>
+          
+              
+              <View style={{flex: 0, height: 50, width: 150}} >
+                    <SuccessAnimation
+                      link="rating"
                     />
-                    <TouchableOpacity>
-                      
-                    </TouchableOpacity>
-                    <LottieView
-                        ref={animation => {
-                        this.animation = animation;
-                        }}
-                        source={require('./assets/10236-reward-badge.json')}
-                        style={{bottom: 30, left: 60, width: 75, height: 75,   }}
-                    />
-                   
-                </View>
-                <Text h4 style={{...styles.elementMargin,flex: 0, marginBottom: 10}}>
-                  Juan Dela Cruz
-                </Text>
-            
-                
-                <View style={{flex: 0, height: 50, width: 150}} >
-                      <SuccessAnimation
-                        link="rating"
-                      />
-                </View>
-                <SafeAreaView style={styles.containerArea}>
-                    <ScrollView style={styles.scrollView}>
-                    <Input
-                    label="Amount"
-                    value="$ 100"
-                            rightIcon={{ 
-                                type: 'font-awesome', 
-                                name: 'check-circle',
-                                color: '#2DC897'
-                            }}
-                            containerStyle={{...styles.elementMargin, flex: 0, width: 325 , justifyContent: 'center',backgroundColor:"white",}}
-                            inputContainerStyle={{ borderRadius:10,backgroundColor:'white',borderBottomColor:'white'}}
-                    />  
-                    <Input
-                    label="Interest"
-                    value="$ 10 / month"
-                            rightIcon={{ 
-                                type: 'font-awesome', 
-                                name: 'check-circle',
-                                color: '#2DC897'
-                            }}
-                            containerStyle={{...styles.elementMargin, flex: 0, width: 325 , justifyContent: 'center',backgroundColor:"white", }}
-                            inputContainerStyle={{ borderRadius:10,backgroundColor:'white',borderBottomColor:'white'}}
-                    />  
-                    <Input
-                    label="Due Date"
-                    value="10/10/2019"
-                            rightIcon={{ 
-                                type: 'font-awesome', 
-                                name: 'check-circle',
-                                color: '#2DC897'
-                            }}
-                            containerStyle={{...styles.elementMargin, flex: 0, width: 325 , justifyContent: 'center',backgroundColor:"white",}}
-                            inputContainerStyle={{ borderRadius:10,backgroundColor:'white',borderBottomColor:'white'}}
-                    />  
-                    <Divider style={{  height: 2 }} />
-                            
-                    <Text style={{
-                        marginBottom: 25,
-                        top: 5,
-                        left: 10,
-                        flex: 0,
-                        fontSize: 20,
-                        fontWeight: 'bold'
-                    }}
-                    >
-                        Badges
-                    </Text>
-
-                    <Divider style={{  height: 2 }} />
-                    <Text style={{
-                        top: 5,
-                        left: 10,
-                        flex: 0,
-                        fontSize: 20,
-                        fontWeight: 'bold'
-                    }}
-                    >
-                        Rewards
-                    </Text>
-                      <Button
-                        title={"Juan Dela Cruz is eligible!"}
-                        buttonStyle={{
-                            backgroundColor: '#4A5BFA',
-                            borderRadius: 20,
-                        }}
-                        titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
-                        containerStyle={{ flex: 1, marginVertical: 25,marginBottom: '0%' }}
-                        underlayColor="transparent"
-                        onPress={() => this.props.navigation.navigate('Eligible')}  
-                      />  
-                    </ScrollView>
-                </SafeAreaView>
-                <Button
-                    title={"Lend Money"}
-                    buttonStyle={{
-                        backgroundColor: '#2DC897',
-                        borderRadius: 30,
-                    }}
-                    titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
-                    containerStyle={{ flex: 0.3 ,marginVertical: 0, height: 50, width: 350, marginBottom: '0%' }}
-                    underlayColor="transparent"
-                    onPress={() => this.props.navigation.navigate('LendSuccess')}  
-                />  
-                <Button
-                    title={"Decline"}
-                    buttonStyle={{
-                        backgroundColor: '#EB658D',
-                        borderRadius: 30,
-                    }}
-                    titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
-                    containerStyle={{ flex: 0,marginVertical: 0, height: 50, width: 350, marginBottom: '0%' }}
-                    underlayColor="transparent"
-                    onPress={() => this.props.navigation.navigate('InitialLending')}  
-                />  
               </View>
-            </ThemeProvider>
-          </ImageBackground>
-        );
+              <SafeAreaView style={styles.containerArea}>
+                  <ScrollView style={styles.scrollView}>
+                  <Input
+                  label="Amount"
+                  value="$ 100"
+                          rightIcon={{ 
+                              type: 'font-awesome', 
+                              name: 'check-circle',
+                              color: '#2DC897'
+                          }}
+                          containerStyle={{...styles.elementMargin, flex: 0, width: 325 , justifyContent: 'center',backgroundColor:"white",}}
+                          inputContainerStyle={{ borderRadius:10,backgroundColor:'white',borderBottomColor:'white'}}
+                  />  
+                  <Input
+                  label="Interest"
+                  value="$ 10 / month"
+                          rightIcon={{ 
+                              type: 'font-awesome', 
+                              name: 'check-circle',
+                              color: '#2DC897'
+                          }}
+                          containerStyle={{...styles.elementMargin, flex: 0, width: 325 , justifyContent: 'center',backgroundColor:"white", }}
+                          inputContainerStyle={{ borderRadius:10,backgroundColor:'white',borderBottomColor:'white'}}
+                  />  
+                  <Input
+                  label="Due Date"
+                  value="10/10/2019"
+                          rightIcon={{ 
+                              type: 'font-awesome', 
+                              name: 'check-circle',
+                              color: '#2DC897'
+                          }}
+                          containerStyle={{...styles.elementMargin, flex: 0, width: 325 , justifyContent: 'center',backgroundColor:"white",}}
+                          inputContainerStyle={{ borderRadius:10,backgroundColor:'white',borderBottomColor:'white'}}
+                  />  
+                  <Divider style={{  height: 2 }} />
+                          
+                  <Text style={{
+                      marginBottom: 25,
+                      top: 5,
+                      left: 10,
+                      flex: 0,
+                      fontSize: 20,
+                      fontWeight: 'bold'
+                  }}
+                  >
+                      Badges
+                  </Text>
+
+                  <Divider style={{  height: 2 }} />
+                  <Text style={{
+                      top: 5,
+                      left: 10,
+                      flex: 0,
+                      fontSize: 20,
+                      fontWeight: 'bold'
+                  }}
+                  >
+                      Rewards
+                  </Text>
+                    <Button
+                      title={"Juan Dela Cruz is eligible!"}
+                      buttonStyle={{
+                          backgroundColor: '#4A5BFA',
+                          borderRadius: 20,
+                      }}
+                      titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
+                      containerStyle={{ flex: 1, marginVertical: 25,marginBottom: '0%' }}
+                      underlayColor="transparent"
+                      onPress={() => this.props.navigation.navigate('Eligible')}  
+                    />  
+                  </ScrollView>
+              </SafeAreaView>
+              <Button
+                  title={"Lend Money"}
+                  buttonStyle={{
+                      backgroundColor: '#2DC897',
+                      borderRadius: 30,
+                  }}
+                  titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+                  containerStyle={{ flex: 0.3 ,marginVertical: 0, height: 50, width: 350, marginBottom: '0%' }}
+                  underlayColor="transparent"
+                  onPress={() => this.props.navigation.navigate('LendSuccess')}  
+              />  
+              <Button
+                  title={"Decline"}
+                  buttonStyle={{
+                      backgroundColor: '#EB658D',
+                      borderRadius: 30,
+                  }}
+                  titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+                  containerStyle={{ flex: 0,marginVertical: 0, height: 50, width: 350, marginBottom: '0%' }}
+                  underlayColor="transparent"
+                  onPress={() => this.props.navigation.navigate('InitialLending')}  
+              />  
+            </View>
+          </ThemeProvider>
+        </ImageBackground>
+      );
+     }
       }
-  }
-  
 
   const styles = StyleSheet.create({
     container: {

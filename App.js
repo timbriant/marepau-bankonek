@@ -14,6 +14,9 @@ import LendScanQRScreen from './LendScanQR.js';
 import RequestScreen from './Request.js';
 import LendSuccessScreen from './LendSuccess.js';
 import EligibleScreen from './Eligible.js';
+import LoginScreen from './login.js';
+import LendRequestScreen from './LendRequest.js';
+import LendeeQRScreen from './LendeeQR.js';
 
 const AppNavigator = createStackNavigator(
   {
@@ -29,11 +32,14 @@ const AppNavigator = createStackNavigator(
     LendScanQR: LendScanQRScreen,
     Request: RequestScreen,
     LendSuccess: LendSuccessScreen,
-    Eligible:EligibleScreen
+    Eligible:EligibleScreen,
+    Login: LoginScreen,
+    LendRequest: LendRequestScreen,
+    LendeeQR: LendeeQRScreen
   },
   {    
     headerMode: 'none',
-    initialRouteName: "Request"
+    initialRouteName: "Home"
   }
 );
 

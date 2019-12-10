@@ -21,6 +21,131 @@ export default class LendSuccessScreen extends Component {
         };
       }
 
+      componentDidMount() {
+
+        var curBalance = null;
+        var getRequest = new XMLHttpRequest();
+
+        getRequest.withCredentials = true;
+        getRequest.open("GET", "https://marepau-6431.restdb.io/rest/data");
+        getRequest.setRequestHeader("content-type", "application/json");
+        getRequest.setRequestHeader("x-apikey", "	3fd85f237efc9095e9f85488a6d2fed597ed8");
+        getRequest.setRequestHeader("cache-control", "no-cache");
+
+        getRequest.send(curBalance);
+
+        getRequest.onreadystatechange = (e) => {
+          if (getRequest.readyState !== 4) {
+            return;
+          }
+
+          if (getRequest.status === 200) {
+            var myObj = JSON.parse(getRequest.responseText);
+            let i = 0;
+            while (i < myObj.length) {
+              if (myObj[i]._id === "5def81aefd00a755000130bf"){
+                curBalance = parseInt(myObj[i].amount, 10);
+              }
+              i++;
+            }
+         
+            var data = JSON.stringify({
+              "amount": curBalance + 100
+            });
+    
+            var requestUpdate = new XMLHttpRequest();
+            requestUpdate.withCredentials = true;
+    
+          
+            requestUpdate.open("PUT", "https://marepau-6431.restdb.io/rest/data/5def81aefd00a755000130bf")
+            requestUpdate.setRequestHeader("content-type", "application/json");
+            requestUpdate.setRequestHeader("x-apikey", "3fd85f237efc9095e9f85488a6d2fed597ed8");
+            requestUpdate.setRequestHeader("cache-control", "no-cache");
+    
+            requestUpdate.send(data);
+    
+            requestUpdate.onreadystatechange = (e) => {
+              if (requestUpdate.readyState !== 4) {
+              }
+    
+              if (requestUpdate.status === 200) {
+                  DeductSelf();
+                  } else {
+                console.warn('error');
+              }
+            };
+
+
+
+          } else {
+            console.warn('error');
+          }
+        };
+
+
+        function DeductSelf () {
+          var curBalance = null;
+        var getRequest = new XMLHttpRequest();
+
+        getRequest.withCredentials = true;
+
+      
+        getRequest.open("GET", "https://marepau-6431.restdb.io/rest/data");
+        getRequest.setRequestHeader("content-type", "application/json");
+        getRequest.setRequestHeader("x-apikey", "	3fd85f237efc9095e9f85488a6d2fed597ed8");
+        getRequest.setRequestHeader("cache-control", "no-cache");
+
+        getRequest.send(curBalance);
+
+        getRequest.onreadystatechange = (e) => {
+          if (getRequest.readyState !== 4) {
+            return;
+          }
+
+          if (getRequest.status === 200) {
+            var myObj = JSON.parse(getRequest.responseText);
+            let i = 0;
+            while (i < myObj.length) {
+              if (myObj[i]._id === "5def81aefd00a755000130be"){
+                curBalance = parseInt(myObj[i].amount, 10);
+              }
+              i++;
+            }
+         
+
+
+            var data = JSON.stringify({
+              "amount": curBalance - 100
+            });
+    
+            var requestUpdate = new XMLHttpRequest();
+            requestUpdate.withCredentials = true;
+    
+          
+            requestUpdate.open("PUT", "https://marepau-6431.restdb.io/rest/data/5def81aefd00a755000130be")
+            requestUpdate.setRequestHeader("content-type", "application/json");
+            requestUpdate.setRequestHeader("x-apikey", "3fd85f237efc9095e9f85488a6d2fed597ed8");
+            requestUpdate.setRequestHeader("cache-control", "no-cache");
+    
+            requestUpdate.send(data);
+    
+            requestUpdate.onreadystatechange = (e) => {
+              if (requestUpdate.readyState !== 4) {
+              }
+    
+              if (requestUpdate.status === 200) {
+                  } else {
+                console.warn('error');
+              }
+            };
+          } else {
+            console.warn('error');
+          }
+        };
+        }
+
+      }
+
 
     render() {
         const {
