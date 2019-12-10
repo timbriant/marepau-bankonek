@@ -5,6 +5,12 @@ import HomeScreen from './Home.js';
 import RegisterScreen from './Register.js';
 import ExistingCustomerScreen from './ExistingOB.js';
 import ExistingCustomerOTPScreen from './OTPOB.js';
+import ExistingCustomerDetailScreen from './DetailsOB.js';
+import TermsAndCondtionsScreen from './TermsAndCondition.js';
+import SuccessScreen from './Success.js';
+
+
+
 
 
 
@@ -13,7 +19,10 @@ const AppNavigator = createStackNavigator(
     Home: HomeScreen,
     Register: RegisterScreen,
     ExistingCustomer: ExistingCustomerScreen,
-    ExistingCustomerOTP: ExistingCustomerOTPScreen
+    ExistingCustomerOTP: ExistingCustomerOTPScreen,
+    ExistingCustomerDetails: ExistingCustomerDetailScreen,
+    TermsAndCondition: TermsAndCondtionsScreen,
+    Success: SuccessScreen
   },
   {    
     headerMode: 'none',

@@ -46,7 +46,7 @@ export default class HomeScreen extends Component {
 
   const styles = StyleSheet.create({
     container: {
-      marginBottom: 50,
+      marginBottom: 30,
       flex: 0,
       flexDirection: 'column',
     },

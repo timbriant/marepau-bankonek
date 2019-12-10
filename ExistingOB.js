@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import Header from './Header.js';
 import {StyleSheet, View, ImageBackground, TextInput} from 'react-native';
 import { ThemeProvider, Text, Image, Input, Button } from 'react-native-elements';
-import CountryPicker from 'react-native-country-picker-modal'
-import PhoneInput from 'react-native-phone-input'
 
 
 export default class ExistingCustomerScreen extends Component {

@@ -52,7 +52,7 @@ export default class ExistingCustomerOTPScreen extends Component {
                         codeInputFieldStyle={styles.underlineStyleBase}
                         codeInputHighlightStyle={styles.underlineStyleHighLighted}
                         onCodeFilled = {(code => {
-                            console.log(`Code is ${code}, you are good to go!`)
+                            this.props.navigation.navigate('ExistingCustomerDetails')
                         })}
                     />
                     <Text>
@@ -80,7 +80,6 @@ export default class ExistingCustomerOTPScreen extends Component {
         );
       }
   }
-  
 
   const styles = StyleSheet.create({
     container: {
