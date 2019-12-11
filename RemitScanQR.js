@@ -5,9 +5,9 @@ import { ThemeProvider, Text, Image, Input, Button, Icon} from 'react-native-ele
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 
-export default class LendScanQR extends Component {
+export default class RemitScanQR extends Component {
     onSuccess = (e) => {
-        this.props.navigation.navigate('Request')
+        this.props.navigation.navigate('RemittanceRequest')
       }
 
  render() {
@@ -21,14 +21,10 @@ export default class LendScanQR extends Component {
              onRead={this.onSuccess}
              topContent={
                <Text style={{textAlign: 'center'}}>
-                  <Text style={styles.textBold}> Scan your lendee's QR code to instantly get the details! </Text>
+                  <Text style={styles.textBold}> Scan your your remittance center's {"\n"} QR code to instantly get the details! </Text>
               </Text>
             }
         />
-
-
-
-      
       </ThemeProvider>
     )
   }

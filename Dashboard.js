@@ -229,6 +229,10 @@ export default class TermsAndCondtionsScreen extends Component {
                                     />
                                 }
                                 type="clear"
+                                onPress={() => this.props.navigation.navigate('InitialRemit',{
+                                    user: this.state.user
+                                })}
+
                         />
                         </View>
                         <View style={{...styles.homeIcons, ...styles.homeButtons }}>

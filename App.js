@@ -17,6 +17,10 @@ import EligibleScreen from './Eligible.js';
 import LoginScreen from './login.js';
 import LendRequestScreen from './LendRequest.js';
 import LendeeQRScreen from './LendeeQR.js';
+import InitialRemitScreen from './InitialRemit.js';
+import RemitsQRScreen from './RemitScanQR.js';
+import RemittanceRequestScreen from './RemittanceRequest.js';
+import RemitStatusScreen from './RemitStatus.js';
 
 const AppNavigator = createStackNavigator(
   {
@@ -35,7 +39,11 @@ const AppNavigator = createStackNavigator(
     Eligible:EligibleScreen,
     Login: LoginScreen,
     LendRequest: LendRequestScreen,
-    LendeeQR: LendeeQRScreen
+    LendeeQR: LendeeQRScreen,
+    InitialRemit: InitialRemitScreen,
+    RemitScanQR :RemitsQRScreen,
+    RemittanceRequest :RemittanceRequestScreen,
+    RemitStatus:RemitStatusScreen
   },
   {    
     headerMode: 'none',
